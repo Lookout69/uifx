@@ -6,15 +6,14 @@ import java.util.List;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class iconfoldermanager
+public class IconFolderManager
 {
     private static final String BASE_PATH = System.getProperty("user.home") + "/.runelite/uifx/tab_icons/";
 
-    // Tabs you want folders for — simplified dynamic variants
     private static final List<String> TAB_NAMES = Arrays.asList(
-            "combat", "skills", "quest", "inventory", "equipment",
-            "prayer", "magic", "clan", "friends", "account",
-            "logout", "settings", "emotes", "music"
+            "Combat", "Skills", "Quests", "Inventory", "Worn Equipment",
+            "Prayer", "Spellbook", "Chat-channel", "Friends", "Account",
+            "Logout", "Settings", "Emotes", "Music"
     );
 
     public static void createAllTabFolders()
@@ -27,11 +26,11 @@ public class iconfoldermanager
                 boolean created = tabFolder.mkdirs();
                 if (created)
                 {
-                    log.info("Created folder for tab: " + tab);
+                    log.info("Created folder for tab: {}", tab);
                 }
                 else
                 {
-                    log.warn("Failed to create folder for tab: " + tab);
+                    log.warn("Failed to create folder for tab: {}", tab);
                 }
             }
         }
@@ -42,6 +41,8 @@ public class iconfoldermanager
         return new File(BASE_PATH);
     }
 
+
+    @SuppressWarnings("unused")
     public static File getTabFolder(String tabName)
     {
         return new File(BASE_PATH + tabName);
